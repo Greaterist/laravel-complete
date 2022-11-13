@@ -1,24 +1,32 @@
+import axios from "axios";
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import TableRow from "./TableRow";
 
-class Table extends Component{
-
-    constructor(props){
+class Table extends Component {
+    constructor(props) {
         super(props);
         this.state = {
             employees: [],
-            
-        }
+        };
     }
 
     // Get Employee List.
     getEmployeeList = () => {
+        let self = this;
+        axios.get("/get/employee/list").then(function (response) {
+            self.setState({
+                employees: response.data,
+            });
+            //console.log(response.data);
+        });
+    };
 
+    componentDidMount() {
+        this.getEmployeeList();
     }
 
-
-
-    render(){
+    render() {
         return (
             <div className="container">
                 <div className="row justify-content-center">
@@ -32,23 +40,9 @@ class Table extends Component{
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td colspan="2">Larry the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+                            {this.state.employees.map(function (x, i) {
+                                return <TableRow key={i} data={x}/>;
+                            })}
                         </tbody>
                     </table>
                 </div>
