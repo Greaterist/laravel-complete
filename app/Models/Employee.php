@@ -20,7 +20,7 @@ class Employee extends Model
     //public $timestamps = false; // Штамп времени. По умолчанию true
 
     use HasFactory;
-    protected $fillable = [
+    protected $fillable = [ // $fillable ограничивает список столбцов, в которые пользователь может записать данные
         'employee_name',
         'salary',
     ];
