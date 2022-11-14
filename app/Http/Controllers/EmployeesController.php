@@ -11,7 +11,7 @@ class EmployeesController extends Controller
 {
     public function getEmployeeList(){
         try {
-            $employees = Employee::all();
+            $employees = Employee::all();//Eloquent ORM. Использует 
             return response()->json($employees);
         } catch (Exception $e) {
             Log::error($e);
