@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
+import DeleteModal from "./Modals/DeleteModal";
 import UpdateModal from "./Modals/UpdateModal";
 import ViewModal from "./Modals/ViewModal";
 
@@ -59,12 +60,17 @@ class TableActionButtons extends Component {
 
                 <button
                     type="button"
-                    className="btn btn-primary"
+                    className="btn btn-danger"
                     data-bs-toggle="modal"
-                    data-bs-target="Modal"
+                    data-bs-target={"#DeleteModal" + this.props.rowId}
                 >
                     delete
                 </button>
+                <DeleteModal
+                    modalId={this.props.rowId}
+                    employeeData={this.state}
+                />
+
             </div>
         );
     }

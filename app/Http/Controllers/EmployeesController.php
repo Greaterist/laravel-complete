@@ -42,4 +42,13 @@ class EmployeesController extends Controller
             Log::error($e);
         }
     }
+
+    public function deleteEmployeeData(Employee $employee){
+        try {
+            $employee->delete();
+            return response()->json($employee);
+        } catch (Exception $e) {
+            Log::error($e);
+        }
+    }
 }
