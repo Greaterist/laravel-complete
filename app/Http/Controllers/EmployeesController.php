@@ -11,7 +11,7 @@ class EmployeesController extends Controller
 {
     public function getEmployeeList(){
         try {
-            $employees = Employee::all();//Eloquent ORM. 
+            $employees = Employee::orderBy('id', 'ASC')->get();//Eloquent ORM. 
             return response()->json($employees);
         } catch (Exception $e) {
             Log::error($e);
@@ -22,6 +22,22 @@ class EmployeesController extends Controller
         try {
             $employee = Employee::findOrFail($req->get('employeeId'));
             return response()->json($employee);
+        } catch (Exception $e) {
+            Log::error($e);
+        }
+    }
+
+    public function updateEmployeeData(Request $req){
+        try {
+            $employeeId = $req->get('employeeId');
+            $employeeName = $req->get('employeeName');
+            $employeeSalary = $req->get('employeeSalary');
+            Employee::where('id', $employeeId)->update([
+                'employee_name' => $employeeName,
+                'salary' => $employeeSalary,
+            ]);
+
+            return response()->json('OK');
         } catch (Exception $e) {
             Log::error($e);
         }
