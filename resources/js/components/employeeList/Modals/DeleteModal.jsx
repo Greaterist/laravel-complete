@@ -14,7 +14,7 @@ class DeleteModal extends Component {
                 location.reload();
             }, 2500);
         });
-    }
+    };
 
     render() {
         return (
@@ -44,11 +44,23 @@ class DeleteModal extends Component {
                         <div className="modal-body">Are you sure?</div>
 
                         <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-primary" onClick={()=>{
-            this.deleteEmployeeData(this.props.modalId)
-        }}>Yes</button>
-      </div>
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-dismiss="modal"
+                            >
+                                No
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-primary"
+                                onClick={() => {
+                                    this.deleteEmployeeData(this.props.modalId);
+                                }}
+                            >
+                                Yes
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

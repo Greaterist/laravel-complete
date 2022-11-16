@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CreateModal from "./Modals/CreateModal";
 import TableRow from "./TableRow";
 
 class Table extends Component {
@@ -31,6 +32,7 @@ class Table extends Component {
     render() {
         return (
             <div className="container">
+                <CreateModal/>
                 <ToastContainer/>
                 <div className="row justify-content-center">
                     <table class="table table-striped-columns">

@@ -30,3 +30,5 @@ Route::post('update/employee/data', [EmployeesController::class, 'updateEmployee
 
 
 Route::delete('/delete/employee/data/{employee}', [EmployeesController::class, 'deleteEmployeeData']);
+
+Route::post('/store.employee/data', [EmployeesController::class, 'createEmployeeData']);
